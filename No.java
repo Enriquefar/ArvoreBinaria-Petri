@@ -1,12 +1,11 @@
 public class No {
-    Integer conteudo;
-    No esquerda;
-    No direita;
+
+    private Integer conteudo;
+    private No esquerda;
+    private No direita;
 
     public No(Integer conteudo) {
         this.conteudo = conteudo;
-        this.esquerda = null;
-        this.direita = null;
     }
 
     public Integer getConteudo() {
