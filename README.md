@@ -1,27 +1,45 @@
 # Árvore Binária com Remoção
 
-Esse trabalho foi feito em Java e implementa uma árvore binária com inserção, exibição e remoção de nós.
+Trabalho desenvolvido em Java para implementar uma Árvore Binária de Busca com inserção, remoção e exibição dos nós.
 
-A remoção funciona para:
+## Funcionalidades
 
-- Nó folha
-- Nó com um filho
-- Nó com dois filhos
+O projeto permite:
 
-Para remover nós com dois filhos foi usado o método do **sucessor**, que pega o menor valor da subárvore da direita para substituir o nó removido.
+- Inserir valores na árvore
+- Remover valores
+- Exibir percursos da árvore:
+  - Pré-ordem
+  - Em-ordem
+  - Pós-ordem
 
-A implementação foi feita de forma recursiva porque ficou mais simples de organizar e entender o código.
+## Casos de remoção implementados
 
-Como a árvore já funciona percorrendo os nós de forma recursiva, usar esse mesmo jeito na remoção deixou o código mais limpo e facilitou a atualização dos nós depois da remoção.
+### Nó folha
+Quando o nó não possui filhos, ele é removido diretamente.
 
-## Percursos disponíveis
+### Nó com um filho
+O nó removido é substituído pelo seu único filho.
 
-- Pré-ordem
-- Em-ordem
-- Pós-ordem
+### Nó com dois filhos
+Foi utilizado o método do sucessor, onde o nó removido é substituído pelo menor valor da subárvore direita.
 
-## Arquivos
+## Estrutura dos arquivos
 
-- `No.java`
-- `ArvoreBinaria.java`
-- `Main.java`
+- `No.java` → representa cada nó da árvore
+- `ArvoreBinaria.java` → implementação da árvore e métodos principais
+- `Main.java` → testes de inserção, remoção e exibição
+
+## Testes realizados
+
+Foram testados os seguintes cenários:
+
+- Remoção de nó folha
+- Remoção de nó com um filho
+- Remoção de nó com dois filhos
+- Remoção da raiz
+- Tentativa de remover valor inexistente
+
+## Observação
+
+A implementação foi feita utilizando recursividade, pois a própria estrutura da árvore se adapta naturalmente a esse tipo de abordagem, deixando o código mais organizado e fácil de entender.
