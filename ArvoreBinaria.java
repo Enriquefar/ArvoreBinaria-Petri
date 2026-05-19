@@ -4,6 +4,7 @@ public class ArvoreBinaria {
 
     public ArvoreBinaria() {
         this.raiz = null;
+        System.out.println("Árvore criada com sucesso.");
     }
 
     public void inserir(Integer valor) {
@@ -11,7 +12,9 @@ public class ArvoreBinaria {
     }
 
     private No inserirRec(No atual, Integer valor) {
+
         if (atual == null) {
+            System.out.println("Valor " + valor + " inserido.");
             return new No(valor);
         }
 
@@ -19,6 +22,8 @@ public class ArvoreBinaria {
             atual.setEsquerda(inserirRec(atual.getEsquerda(), valor));
         } else if (valor > atual.getConteudo()) {
             atual.setDireita(inserirRec(atual.getDireita(), valor));
+        } else {
+            System.out.println("Valor repetido não permitido.");
         }
 
         return atual;
@@ -31,6 +36,7 @@ public class ArvoreBinaria {
     private No removerRec(No atual, Integer valor) {
 
         if (atual == null) {
+            System.out.println("Valor " + valor + " não encontrado.");
             return null;
         }
 
@@ -45,18 +51,26 @@ public class ArvoreBinaria {
         else {
 
             if (atual.getEsquerda() == null && atual.getDireita() == null) {
+                System.out.println("[Caso 1] Nó folha removido: " + valor);
                 return null;
             }
 
             if (atual.getEsquerda() == null) {
+                System.out.println("[Caso 2] Nó " + valor +
+                        " substituído pelo filho direito.");
                 return atual.getDireita();
             }
 
             if (atual.getDireita() == null) {
+                System.out.println("[Caso 2] Nó " + valor +
+                        " substituído pelo filho esquerdo.");
                 return atual.getEsquerda();
             }
 
             Integer sucessor = menorValor(atual.getDireita());
+
+            System.out.println("[Caso 3] Nó " + valor +
+                    " substituído pelo sucessor " + sucessor);
 
             atual.setConteudo(sucessor);
 
@@ -67,19 +81,18 @@ public class ArvoreBinaria {
     }
 
     private Integer menorValor(No no) {
-        Integer menor = no.getConteudo();
 
         while (no.getEsquerda() != null) {
-            menor = no.getEsquerda().getConteudo();
             no = no.getEsquerda();
         }
 
-        return menor;
+        return no.getConteudo();
     }
 
     public void exibir(String tipo) {
 
         switch (tipo.toLowerCase()) {
+
             case "pre":
                 preOrdem(raiz);
                 break;
